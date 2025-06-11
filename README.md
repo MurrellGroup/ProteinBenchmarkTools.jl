@@ -20,5 +20,6 @@ best_scTMs, all_scTMs = run_designability(backbone_dir; ntries=10)
 diversity_score = run_diversity(backbone_dir)
 
 # optionally pass a foldseek database
+# otherwise it will automatically download the standard PDB foldseek database
 pdbTMs = run_novelty(backbone_dir)
 ```
