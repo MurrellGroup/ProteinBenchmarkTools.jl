@@ -7,7 +7,8 @@
 ```julia
 using Pkg;
 Pkg.activate("--temp")
-Pkg.add("https://github.com/MurrellGroup/ProteinBenchmarkTools.jl")
+Pkg.add(url="https://github.com/MurrellGroup/ProteinRefolding.jl")
+Pkg.add(url="https://github.com/MurrellGroup/ProteinBenchmarkTools.jl")
 using ProteinBenchmarkTools
 
 backbone_dir = "demoinput"
