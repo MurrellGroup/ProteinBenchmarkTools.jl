@@ -6,8 +6,8 @@
 
 ```julia
 using Pkg;
-Pkg.activate(--temp)
-Pkg.add("")
+Pkg.activate("--temp")
+Pkg.add("https://github.com/MurrellGroup/ProteinBenchmarkTools.jl")
 using ProteinBenchmarkTools
 
 backbone_dir = "demoinput"
