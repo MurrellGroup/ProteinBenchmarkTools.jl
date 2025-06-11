@@ -20,6 +20,6 @@ function run_designability(proteinfiles::AbstractVector{<:String}, args...; ntri
     best_run = Dict([key => maximum(val) for (key, val) in pairs(all_runs)])
     return best_run, all_runs
 end
-run_designability(backbone_dir::AbstractString) = run_designability(readdir(backbone_dir; join=true))
+run_designability(backbone_dir::AbstractString, args...; kws...) = run_designability(readdir(backbone_dir; join=true), args...; kws...)
 
 end
