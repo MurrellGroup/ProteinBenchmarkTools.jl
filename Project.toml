@@ -12,6 +12,7 @@ USalign_jll = "927da072-87df-5aff-817c-c070e1bdca98"
 [compat]
 Foldseek_jll = "8.0.0"
 ProteinChains = "0.7.3"
+ProteinRefolding = "1.0.0"
 USalign_jll = "2022.9.24"
 julia = "1.6.7"
 
