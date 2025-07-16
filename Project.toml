@@ -1,7 +1,7 @@
 name = "ProteinBenchmarkTools"
 uuid = "c88d15bf-97e9-4e47-a023-49db67277a02"
 authors = ["aronStalmarck <aron.stalmarck@gmail.com> and contributors"]
-version = "1.0.1-DEV"
+version = "1.0.2-DEV"
 
 [deps]
 Foldseek_jll = "f5adda9a-30aa-5201-a847-bcd4e31b8420"
