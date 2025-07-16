@@ -6,17 +6,17 @@ using USalign_jll
 
 export run_refold, calc_sctm, run_designability
 
-function run_refold(proteinfiles::AbstractVector{<:String}, output_dir, args...; ntries=1, kws...)
+function run_refold(proteinfiles::AbstractVector{<:String}, output_dir, args...; ntries=1, write_preprocessed=true, kws...)
     for nth_try in 1:ntries
-        nth_dir = joinpath(output_dir, "samples_$(nth_try)")
-        prepped_dir = mkpath(joinpath(nth_dir, "preprocessed"))
-        predicted_dir = mkpath(joinpath(nth_dir, "predicted"))
-
         results = refold(proteinfiles, args...; kws...)
 
+        nth_dir = joinpath(output_dir, "samples_$(nth_try)")
+
         for (prepped, predicted) in zip(results.preprocessed_proteins, results.predicted_proteins)
-            writepdb(joinpath(prepped_dir, prepped.name), prepped)
-            writepdb(joinpath(predicted_dir, prepped.name), predicted)
+            if write_preprocessed
+                writepdb(joinpath(nth_dir, "preprocessed", prepped.name), prepped)
+            end
+            writepdb(joinpath(nth_dir, "predicted", prepped.name), predicted)
         end
     end
 end
@@ -24,6 +24,7 @@ run_refold(backbone_dir::AbstractString, output_dir, args...; kws...) = run_refo
 
 function run_mmalign(prot1, prot2)
     # TODO handle error
+    # TODO Is `-ter 0 -split 1` really correct?
     out_io = IOBuffer()
     err_io = IOBuffer()
     cmd = `$(MMalign().exec) "$(prot1)" "$(prot2)" -ter 0 -split 1 -outfmt 2 -mol protein`
