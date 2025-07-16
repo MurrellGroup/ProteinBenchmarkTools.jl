@@ -14,8 +14,10 @@ function run_refold(proteinfiles::AbstractVector{<:String}, output_dir, args...;
 
         for (prepped, predicted) in zip(results.preprocessed_proteins, results.predicted_proteins)
             if write_preprocessed
+                mkpath(joinpath(nth_dir, "preprocessed"))
                 writepdb(joinpath(nth_dir, "preprocessed", prepped.name), prepped)
             end
+            mkpath(joinpath(nth_dir, "predicted"))
             writepdb(joinpath(nth_dir, "predicted", prepped.name), predicted)
         end
     end
